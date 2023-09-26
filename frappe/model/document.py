@@ -1124,7 +1124,7 @@ class Document(BaseDocument):
 
 		update_global_search(self)
 
-		self.save_version()
+		# self.save_version()
 
 		self.run_method("on_change")
 

@@ -43,6 +43,8 @@
   "links",
   "document_states_section",
   "states",
+  "document_filters_section",
+  "link_filters",
   "web_view",
   "has_web_view",
   "allow_guest_to_view",
@@ -660,6 +662,18 @@
    "fieldtype": "Tab Break",
    "label": "Connections",
    "show_dashboard": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "document_filters_section",
+   "fieldtype": "Section Break",
+   "label": "Document Filters"
+  },
+  {
+   "fieldname": "link_filters",
+   "fieldtype": "Table",
+   "label": "Link Filters",
+   "options": "DocType Filter2"
   }
  ],
  "icon": "fa fa-bolt",
@@ -742,7 +756,7 @@
    "link_fieldname": "reference_doctype"
   }
  ],
- "modified": "2023-08-29 12:27:06.587523",
+ "modified": "2023-09-26 16:09:42.965598",
  "modified_by": "Administrator",
  "module": "Core",
  "name": "DocType",

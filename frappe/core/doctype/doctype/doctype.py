@@ -96,6 +96,7 @@ class DocType(Document):
 		from frappe.core.doctype.docfield.docfield import DocField
 		from frappe.core.doctype.docperm.docperm import DocPerm
 		from frappe.core.doctype.doctype_action.doctype_action import DocTypeAction
+		from frappe.core.doctype.doctype_filter2.doctype_filter2 import DocTypeFilter2
 		from frappe.core.doctype.doctype_link.doctype_link import DocTypeLink
 		from frappe.core.doctype.doctype_state.doctype_state import DocTypeState
 		from frappe.types import DF
@@ -135,6 +136,7 @@ class DocType(Document):
 		is_virtual: DF.Check
 		issingle: DF.Check
 		istable: DF.Check
+		link_filters: DF.Table[DocTypeFilter2]
 		links: DF.Table[DocTypeLink]
 		make_attachments_public: DF.Check
 		max_attachments: DF.Int
