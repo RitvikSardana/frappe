@@ -243,12 +243,14 @@ class TestOneClickServices(IntegrationTestCase):
 		self.pilot.side_effect = None
 		self.assertEqual(email_oauth.get_one_click_services(), {"Outlook.com": "Outlook"})
 
-	def test_lists_nothing_off_frappe_cloud_or_without_create_permission(self) -> None:
+	def test_lists_nothing_off_frappe_cloud(self) -> None:
 		with patch.dict(frappe.conf, {key: None for key in V2}):
 			self.assertEqual(email_oauth.get_one_click_services(), {})
-		with self.set_user(create_user("email-oauth-reader@example.com", "Website Manager").name):
-			self.assertEqual(email_oauth.get_one_click_services(), {})
 		self.pilot.assert_not_called()
+
+	def test_lists_for_a_user_who_cannot_create_email_accounts(self) -> None:
+		with self.set_user(create_user("email-oauth-reader@example.com", "Website Manager").name):
+			self.assertEqual(email_oauth.get_one_click_services(), {"Outlook.com": "Outlook"})
 
 
 def id_token(email: str, tid: str = PERSONAL) -> str:

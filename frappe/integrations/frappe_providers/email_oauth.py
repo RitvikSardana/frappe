@@ -79,7 +79,7 @@ def get_one_click_services() -> dict[str, str]:
 	"""Email Account services this site can add in one click now, each with its provider's label:
 	the providers Frappe Cloud has turned on that this site knows. Empty when Frappe Cloud can't be
 	reached, so adding a mailbox falls back to the normal form."""
-	if not is_v2_site() or not frappe.has_permission("Email Account", "create"):
+	if not is_v2_site():
 		return {}
 	try:
 		active = get_active_providers()
